@@ -1,0 +1,162 @@
+npm - node package manager is wrong 
+npm - no full form 
+npm - manages packages (standard repositories )
+package.json is a configuration for npm .
+
+now we can get packages and dependencies in our project .
+npm takecare of version of that package in package.json
+
+Now start install the dependencies for the project .
+
+*Bundler () - html , css , js  whole code needs to be bundled here 
+webpack, parcel are bundlers it packages the program
+
+create react app - webpack
+
+in our project we use parcel - this is easy bundler to configure.
+
+There are 2 types of packages/dependencies we can install 
+1. dev dependencies -  It means it required for devlopement phase.  
+
+2. normal dependencies -  used in production purpose
+
+we use parcel in dev phase that`s why npm install -D parcel
+
+   "parcel": "^2.12.0" this ^  will automatically upgrade minor version
+      "parcel": "~2.12.0" this ~ will upgrade major versions
+
+after adding dependencies parcel another file created 
+
+
+package-lock.json keeps tracks of xact version
+
+And there is another folder called node modules 
+these are database contains actual data that our project needs
+all the code that we fetch from npm all code of parcel 
+
+parcel also have some other dependencies so other packages are also downloaded in node modules
+
+how would npm know parcel has its own dependencies?
+
+
+our project have package.json and all the libraries have there package.json
+
+nodemodules collection of packages like database
+
+should i put all these node modules to git ? --- NOO
+instead put it in .gitignore
+
+
+should i put my package.json and lock in my git ?----YES
+
+if we have package-lock.json and package.json we can recreate all the nodemodules
+withh npm install  so no need to put nodemodules in git 
+------------------------------------------------------------------------------------------
+Recap - github repository ,
+        npm installation 
+        npm init - package.json  config file for npm  , maintain version of parcel 
+        node modules 
+        git ignore 
+        regenerate nodemodules - npm install 
+----------------------------------------------------------------
+npx means  executing packing 
+
+one way to get react in to our code is cdn links 
+another way is  via npm 
+ 
+cdn links are not preffered way 
+    - another version may come up  so we need to change it manually 
+    - costly operation 
+
+
+Now install react as a package
+
+     we need to install react as normal dependencies
+      ---- npm install react
+      this will add in package.json and in nodemodules
+
+      -- npm i react smaller version of npm install react
+
+
+after that remove the cdn links then run the code .
+Here we caugth with an error that react is not defined  as we have taken the React word from cdn links .
+Now we need to use it with node modules . so use a  import keyword 
+    ----  import React from "react"
+    "react" is in node modules folder 
+    ----- import ReactDOM from "react-dom"
+
+Now we get an {beautiful}error that  browser scriots  cannot import  or exports.
+  
+  <script src="app.js"></script> in  our html wee are injecting our app.js --- it treats as browser script
+  
+  browser scripts cannot understand "import"
+  we need to tell the browser it not a normal browser file it is a module 
+
+    <script type = "module" src="app.js"></script>
+     now the error is gone . now our react is comming from the node modules
+
+     Now we have warning from reactDOM 
+    ------ import ReactDOM from react-dom/client 
+
+
+when we write a code in app.js it automatically save the changes in 3s which is done by parcel .{refreshing the page} which is also known as #HMR{Hot Module Replacement}
+-------- parcel uses the file watching algortithm  -- written in cpp.
+ as soon as we save it will built the app again  
+
+ How it is taking slow so less time ?
+
+-- it gives faster builds by caching 
+
+Parcel-cache - contains  binary files
+
+suppose if we delete the folder parcel-cache and again builds it takes more time {Build in 456ms}
+But if we changing the files again building it takes less time (Build in 6ms)
+
+
+Parcel - IMG optimization . 
+       - minification of files 
+       - Bundling 
+       - Compress your file 
+       - consistent hashing 
+       - code splitting 
+       - differential bundling  - app can be opened in any browser even in older browser 
+       - Https
+       - Diagnostic - {Beautiful Errors}
+       - Error Handling 
+       - Tree Shaking algo   -- remove unused code for u .
+       - lazy module
+       -Different dev and pro bundles 
+
+    To build the prod builds we need to execute 
+        -- npx parcel build index.html
+        \\ we got an error 
+        -- In package.json we have a "main":"app.js"
+        this main is tell to npm - entry point to our app
+        when we use parcel we give npx parcel build index.html so this index.html clashes with app.js
+        So to avoid this error remove the main from json.
+
+        when we are builiding the parcel production the build goes up
+        --- all the files in dist folder -- 
+        dist - automatically genreated 
+        -- production build is highly optimised 
+        --parcel-cache , dist automatically generated so no need to put it {git} .
+
+so add the .parcel-cache and dist in gitignore.
+The nodemodules in local is different from nodemodules in server
+  
+
+
+Instead of all this process we can also do 
+---- create react app
+
+browserlist in nodeModules is npm package 
+
+we have to tell our project that what web browsers are supported in --- inside package.json
+                                                                        add browser list 
+                                                                        {govt website} {country specific details}
+
+
+
+
+
+ 
