@@ -1,0 +1,17 @@
+{
+  "name": "react",
+  "version": "1.0.0",
+  "description": "This is namsthe react",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "(https://github.com/Yashu3624/NamstheReact.git)"
+  },
+  "keywords": [
+  ],
+  "author": "yaswini",
+  "license": "ISC"
+}
