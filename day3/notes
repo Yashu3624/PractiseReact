@@ -1,0 +1,108 @@
+14-06-24
+
+npx parcel index.html create a developemet build for us 
+-- npx u are executing npm  with source file index.html
+
+        these commands are diff from dev build and prod build .
+
+    To make it easier we create a script so that there is no need to use the npx parcel index.html every time  we can use npm script 
+
+    so in package. json we will create this npm.script
+    ---- in package.json in scripts write like this      "scripts": {
+                                                                "start" : "parcel index.html",
+
+                                                                 "test": "jest"
+                                                                },
+                                                                this is for creating dev build (dev mode)
+PS C:\Users\yaswini\OneDrive\Desktop\day3> npm run start 
+
+> day3@1.0.0 start
+> parcel index.html
+
+                                                            IN production mode 
+                                                            "scripts":{
+                                                                "start":"parcel index.html",
+                                                                "build":"parcel build index.html",
+                                                
+                                                            },
+
+PS C:\Users\yaswini\OneDrive\Desktop\day3> npm run build
+
+> day3@1.0.0 build
+> parcel build index.html
+
+✨ Built in 2.53s
+
+dist\index.html                343 B    695ms
+dist\index.9c8ce86a.css         65 B     29ms
+dist\index.579dfb66.js     138.99 KB    699ms
+
+
+Now to build the react we use the commanda npm run start --- it will exactly do as the npx parcel index.html . this is for starting the project 
+                                            npm run build --- build the project for production 
+    npm run start --- npm start {only for start}
+
+
+
+----FUNdamEntals-----------
+
+start from scratch 
+
+
+-- in app.js
+just like dom elements react have react elements
+
+const heading = React.createElement("h1" , {id:"heading"} , "This is day3 react ");
+ this React.createElement creates an object  but when it renders to dom it becomes html element .
+
+
+
+ //  const heading = React.createElement("h1" , {id:"heading"} , "This is day3 react ");
+ this is not a good way to represent the react elements so facebook developed this jsx . (to create react elements easier )
+ JSX is not a part of react.
+
+ we can build react without jsx also but it makes it easier .
+
+-- jsx is diff from html -- it is not html in js.
+--------- it is html like syntax or XML like syntax.
+
+"<h1>Namsthe React using JSX</h1>" this is jsx code .
+
+when this code is executed this become react element 
+
+is jsx is valid javascript?
+ -- it is not pure js . js engine does not understand it {jsk} it only understand ES6 .
+ -- browser also don't understand it .
+then how is it working 🤔?
+"PARCEL is doing this work 😎"
+
+the code will transpiled before it goes into js engine .
+-- transpiled means coverted to code so that react understand .
+-- transpiling is done by "PARCEL" which is {Babel}.
+-- Babel - takes the code and converts so that react will understand .
+// JSX => React.createEleemnt => reactELement => HTML ELEMENT(render)
+
+Babel is opensource js compiler
+-- jsx -- CAMELCASE (attributes)
+
+if we want to write jsx  in multiple lines use ()
+
+-- {React Component}
+----- everything  in  react is a component.
+They are 2 types of components
+        - class based component  // old way of writing thr code . -- js classes
+        - function based component // new way of writing the code. -- js functions 
+
+React component === normal js function
+
+whenever creating a react component and function name it with "CAPITAL" letter
+
+react functional component -- function returns a jsx code / react element
+
+
+we can render react component as 
+        root.render(<ReactComponent/>) ; {syntax} 
+
+Its not mandatory to use arrow functions we can also use normal functions 
+
+IN react component if we use {} in this we can write any js code.
