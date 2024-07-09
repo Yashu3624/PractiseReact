@@ -1,0 +1,106 @@
+everything in react we can create with html ,css, js 
+then why react ?
+-------- react  -- makes ur develeoper experience
+                -- write less no of code
+                --modif
+
+
+best practise - make seperate files for seperate components
+
+
+---folder structure-------
+
+In react project we keep all the files ins src .
+
+
+in components name the components as same it is.
+
+In app.js first we need to import the components 
+but before that export the components
+1.export 
+2.import
+
+
+nEVER KEEP THE hard coded data in components like resList .
+
+cdn url also a hard coded string so keep it in seperate files 
+
+util folder == commonfolder
+
+one way to export is export default component name       --- default export
+2.named export - in single file export multiple things .
+
+we can not write a default twice .
+export default cdn_URL
+export default logo_url  throws an error .
+
+
+so write export infront of that variable . (multipled files to export in a file)
+then the import will be 
+  export const component 
+  we can import named component as 
+  =---------------- import {component} from path
+
+Home work -can we use both of these export at once
+
+
+
+       --- REACT HOOKS     -- ---
+
+       ... BUTTON - FILTER  --TOP RATED RESTAURANT
+       react is fast in dom manipulation .
+
+
+state varible - powerful variable -- react hook - used state. 
+hook - normal javascript function - prebuild - superpowers --
+
+
+2 imp HOOKS 
+1.useState() -- super powerful react variable in react
+                     it maintains the state of the variable .
+----------
+       import {useState} from "react";
+
+creation of local variable ;
+const [listOfRestaurant] = useState();------{state variable}
+let listOfRestaurant  {normal variable}
+
+when we call this useState() it will give a state variable which is revieved through listOfRestaurant .
+
+whenever a statevariable updates  react rerenders components
+
+const [listOfRestaurant , setListOfRestaurnat] = useState(resList) ; --- RECONSILIATION starts when setListOfRestaurnat is called 
+
+then react find out the div and update the UI
+
+const [listOfRestaurant , setListOfRestaurnat] = useState(resList) ; array destructruing .
+2.useEffect()
+
+
+---------------
+  {"                                RECONSILIATION ALGORITHM   -- react fiber    {react 16}       "                        }
+
+
+              RES -container contains - 7 data cards and  it change to  3 cards using filter and ui will change along with it using hooks useState 
+
+              virtual dom is actual representation of DOM 
+              
+              \\ actual dom  |   \\ virtual DOM
+                                   react obj 
+              <div>          |
+              <div>
+              <img>          | 
+
+ 
+
+ Diff ALGORITHM - find outs the diff between 2 virtual doms .
+
+               \\ old virtual dom         |   \\New virtual DOM
+                                                 react obj 
+                                          |
+            
+                                          | 
+
+ actually update the dom - rerenders.
+
+-
