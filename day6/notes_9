@@ -1,0 +1,56 @@
+OPTIMISING OUR APP 
+---------------------
+
+single responsibility  principle
+
+
+for each component it must have single thing to work 
+
+
+Break down the code into different modules -- code will be more maintable and testible , resuable
+
+Hooks - utility function -
+
+
+
+Custom Hooks 
+
+These are helper functions create them in utilities with the same name use prefic used
+
+another hook ------
+
+whether the users is online or offline we can show something on page
+
+to check it we use a eventlistener - track whether it is online or offline 
+just add eventlistener one time = = useEffect with empty dependencies array as it only renders one time 
+
+we can also game like dino.
+
+is it mandatory to use "use" in hooks ?
+lib recommends use 
+
+
+OPTIMISING even more 
+=========================
+
+dynamically bundling .
+
+create few components 
+    Grocery component
+
+
+lazy loading - intially our page dont have Grocery page but when we click it 
+has Grocery page
+
+ON DEMAND loading only when the user go to that page
+
+we will import like this 
+    cosnt Grocery = lazy() ;
+
+    this lazy takes a call back function 
+
+    const Grocery = lazy() => import() ) ; 
+    this import is not a regular import 
+    this import takes the path of that Grocery ;
+
+    now by doing these we make 2 bundles i.e  main bundle and Grocery bundle

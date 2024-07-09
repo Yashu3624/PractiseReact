@@ -1,0 +1,151 @@
+class components
+ 
+ it has render() which returns the jsx components.
+
+ in class components it uses extends keyword which says that class component
+
+ Functional component is a function which returns the jsx component 
+ class components which extends React.Component - it has a render mthod which returns the jsx .
+
+there is no diff in importing these components .
+
+In class based component props are implemented using constructor 
+
+when we pass a props it is recieved in  constructor  and we can access it by using this.props.name 
+which can be accessible in any class
+
+loading a component in our webpage means creating the instance in page
+to update the state varibles we have setName 
+
+this.state.count = this.state.count  + 1 -----this is wrong way to update the state varibles .
+Never ever update state variables directly 
+we can use this.setState in that we pass an object which contain updated variables
+ this.setState ({
+    count: this.state.count + 1 ; 
+ });
+react class based component -  componentDidMount ()
+-- when the component is loaded the constructor is called then the render is called 
+once this class based component mounted on dom  - then this componentDidMount is called.
+
+
+constructor - render - componentDidMount
+
+if there is a componentDidMount in parent component as well then ?
+
+------------------------------
+LIFE CYCLE OF PARENT CHILD 
+-------------------------------
+ constructor - render (while rendering it checks it has child clas component the it goes to  )
+here rthe parent component mounting is not done but it goes to child class component and
+it triggers it life cycle whuch is calling constructor - render  - child Mount - (once the child mount completed then it calls the parent mount called)
+
+WHY componentDidMount IS USED? ---- to make api calls 
+
+if we want to make an api call that is inside componentDidMount
+
+we can make api calls in useEffect in fuction based component \
+similary class based component to make react quickly load the api we use componentDidMount 
+
+first we load our component - then we can fill api - so that react components load very faster 
+we dont want to wait for the api to return the data to render the component 
+otherwise the component will not render untill it gets data for api react wants to quicly render then make a api call
+
+similarly in class based component we want to quickly render the component then make 
+an api call  -- fill the data of api call then rerender the component.
+
+
+what if we have multiple child classes ?Then how will be the lifecycle of these ?
+means 2 diff instances of that class 
+----parent constructor
+----parent render
+    ----akshay constructor
+    ----akshay render
+    ---akshay componentDidMount
+    ---elon constructor
+    --elon render
+    ----elon componentDidMount
+---parent componentDidMount
+
+--------this is a wrong way to call when there is a multiple childrens are there
+
+the correct way to render it 
+----parent constructor
+----parent render
+    ----akshay constructor
+    ----akshay render
+
+    ---elon constructor
+    --elon render
+
+
+DOM updates as a single patch
+    ---akshay componentDidMount
+    ----elon componentDidMount
+---parent componentDidMount
+
+REACT LIFE CYCLE DIAGRAM
+
+REACT is fast because it has 2 phases
+    1.render phase  ( {   constructor , render})
+    2.commit phase ( {  update dom , componentDidMount})
+
+    react optimises it ( batches the render phase)
+
+How to get an api call put the data in class based components
+
+
+In class beased component we add async to before componentDidMount 
+
+we create a state variable and then update it  
+
+
+mounting cycle finishes when our component renders ,
+
+when we use set state updating phase starts
+
+when the state var updated react triggers render once again .
+
+componentDidUpdate 
+
+/**** 
+
+MOUNTING LIFE CYCLE
+
+--- constructor 
+---Render (dummy)
+    <html Dummy>
+    componentDidMount
+        <API CALLS>
+        <this.setState>
+
+
+--------UPDATE CYCLE 
+    -- Render(API data)
+    <html loaded with api data>
+
+    componentDidUpdate
+*/
+
+componentWillUnmount()
+just before gone for new page 
+
+
+Never compare react lifecycle to function component
+
+
+what happends if we dont put dependencies array -- after every render the useEffect function will be called .
+
+
+but in class based component after first render it calls - componentDidMount 
+
+after every subsequent render it is updated it is not mounted.
+
+in useEffect empty dependencies array - it will called just once 
+
+componentWillUnmount - when we are leaving the page .
+
+cons of SPA - when we are changing our pages it is not reloading our page it is just changing the components
+
+return () => {
+    this function wil be used when we unmOunting it
+}

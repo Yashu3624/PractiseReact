@@ -1,0 +1,136 @@
+monolith architecture               --Micro service architecture
+       
+Earlier when apps were developed they used monolith arch
+ -- Huge code .
+In project 
+    -API
+    -UI
+    -DB
+    -AUThnication
+
+--Micro service architecture
+        -BACKEND SERVICE        -- UI SERVICE  -- AUTH--
+       all theese Micro services combined together to form big app 
+        Each and every thing we have a seperate project -- seperation of concerns
+
+        how all these services deployed?
+
+        The react project we made is in UI service which is written in react .
+        u can write any language in any micro service arch . 
+        IN UI we used react like that BACKEND will have java .
+
+        All these services run on their own ports 
+                supposes 1234 - UI
+                         1000 - B.E
+        at the end all these services mapped to domain name 
+
+        How these services interact ?
+        They make call to other services and connect to port 
+
+----------------------------
+DYNAMICALLY FETCHING THE DATA  using api 
+
+2 approches how web apps and ui applications fetch the data 
+        1. when app loads - just make an api call(500ms)  -- (wait for ui to come) -- render 
+
+        2. as soon as page loads - render(ui)- now api call  - render 
+
+In react we always use 2nd approch -- better ux 
+        -in intial approch till 500ms we dont see anything -- poor ux exp
+        -but in 2nd we can see skeleton when we load the page.
+
+        -- but here it is doing rendering 2 times
+        react renders fast 
+-------------
+UseEffect HOOK {react library}      -- function 
+
+2 arguments      -1.call bck fun
+                 -2.dependency array 
+
+when will be UseEffect function called?
+        after our component renders 
+
+when the body function render after it will quickly call this callback function.
+        1.body will be rendered 
+        2.UseEffect will be called .
+
+UseEffect will be helpfull in 2nd approach .
+render the body component now we will fetch data using api
+
+
+ fetch() - browsers - in jsEngine has 
+ ----but can i use swiggy api in our app directly 🤔?
+        we will get an error 
+        calling swiggy.com from local host - blocked due to cors policy which is   due to browser.
+
+        Our chrome browser not allowing to call the swiggy from one origin to another origin  there is a mismatch .
+        just use cors chrome extension
+
+
+
+  fetch will return a promise .
+  aync await use 
+
+  once we get the data convert this daata to json.
+
+  render our page in our app .
+
+   json.data.cards[2].card.card.gridElements.infoWithStyle.restaurants is this a good way of writiing the code ?
+   NOOOOOOOOOOOOOOOOOOO
+
+   then ------ Optional Chaining 
+    json?.data?.cards[2]?.card?.card?.gridElements?.infoWithStyle?.restaurants
+
+
+As soon as we load the page -- we can show spinning loader
+
+if(listOfRestraunt.length == 0 )
+{
+        return <h1>Loading</h1>;
+}
+
+shimmer ui -- load a fake page until it is data is loaded
+
+create a shimmer component
+
+why do we need state variables ? can we use local inplace of state?
+
+js doesnt work in making dynamically update our buttom after clicking login it changes to logout 
+
+To change something in our components we use state variblrs 
+
+whenever this state variable changes - react will rerender its header components
+
+Is it rendering whole header or only button?
+
+whole header is rerendering 
+How the const var updated?
+-- at initial time the button is login as soon we setBtnName it renders the header component
+ here it is not modifing the const its a new varible after we renders
+ the new value is created not by default value but with updated value 
+=== It will find the div of older version and newer version and update the only component that is onclick
+only the button val changes
+
+
+search bar ------------------
+search text box bind to this input box 
+whatever text present inside the searchtext will be there in input box ;
+when i change  value of input box it still tied to it search text 
+
+this input box will not change unless if we change the searchtext
+
+So we use onChange handler to it  -  as soon as my input tag changes -- onchange function should also change my function
+
+whenever we change the local state variable  the whole body component is rerendered
+
+like when we enetring the search text for each character press the whole body component is rerendered
+
+whenever state variables update , react triggers a reconciliation cycle  (rerenders the component)
+
+React rendering whole component but updating input box val inside the dom .
+
+
+once we filterd the restaurants using the search filter if we use again the search filter it will filter the components with the previously filterd data . 
+means its updating the listOfRestraunt with filterd list . so we may not get the good result if we use the filter after using it.
+
+SO we keep the copy of the filterd restaurants 
