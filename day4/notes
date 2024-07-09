@@ -1,0 +1,74 @@
+-----------------PROJECT-----------
+
+----------FOOD ORDERING ----------------------
+
+.....PLANNING 
+     header with LoGo in left sid in right side navbar home , about 
+     body -- search bar, cards(food names , content)
+     bottom cpRIghts
+
+..low level planning
+comoponents
+{
+    header comoponent {
+        .LoGo
+        .navbar
+    }
+    body comoponent  {
+        .search
+        .restroCardContainer
+
+    }
+    footer comoponent {
+        .copyrights
+        .address
+        .links
+        .contact
+    }
+}
+----------------------------------------------
+
+
+
+// dynamic cardds 
+props - properties === pass to components == dynamically passing the data 
+PROPS == normal arguments of function 
+
+passing prop to a function is passing a argument to the function 
+<RestrauntCard  resName = "Meghana Foods" cusines = "NorthIndia , chinesse"/>
+resName , cusines are props 
+
+prop == object 
+
+when u dynamically passing a data to components u have to pass it with { props}
+const RestarauntCard =  (props) =>
+    or destructing way 
+    -const RestarauntCard =  ({res.name , cusines}) =>{
+restraunt data comes from backend - json .              }
+
+
+{      config driven UI }  -- controling your data using UI  where data is from backend (.json)
+cloudanary img 
+
+
+unique key product 
+map.filter 
+-------------MUST use KEYYs---------
+container --- contains diff restro cards 
+ React optimises render cycles 
+
+ suppose if a new Restruant came in container if there is no key react do not where to put it 
+ so it cleans the container rerender all these cards it does not which new card is added 
+it will treat all cards as same ,,,,,,,,,,,,,,,,,,.......but if we use key it will render only newly added .
+key should be unique if not react throw warning .
+
+
+some people also uses indexes 
+
+2 properties of map ..
+u can use index as key .This logically correct 
+becoz react itself says that do not use indexes 
+
+
+if we there is no unique id then u can use indexes but it is not recomennded
+
